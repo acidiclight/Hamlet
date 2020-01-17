@@ -1,0 +1,79 @@
+{
+  "StartingSceneState": 0,
+  "SceneStates": [
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "You are standing in a guard tower at a kingdom in Denmark.  It is night time and freezing cold outside.  You are earning less than minimum wage for the job of guarding the castle.",
+      "Choices": [
+        "Complain to HR about your working conditions.",
+        "Grin and bear.",
+        "Yell \"I don't get paid enough for this.\" and clock out for the night."
+      ],
+      "Responses": [
+        "You go to the castle's human resources after your shift is over and complain about the cold weather and darkness.  In response to your complaint, the human resources lady pulls out a sword and stabs you.  You are now dead.",
+        "Choosing to grin and bear it like the man you are, you stand guard at the tower for another 2 hours.",
+        "Your rage-quit is heard by other employees in the tower who subsequently alert HR.  You are fired and banished to the dungeon for gross neglegance.  You are now a slave and get paid absolutely nothing just to trim weeds all day.  Are you happy now?"
+      ],
+      "CorrectCHoice": 1
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "Eventually, another guard arrives at your tower.  It is now time for the two of you to switch places.  Before you clock out, your very concerned and stressed out coworker asks you \"Have you seen the ghost?\"  About to leave, you answer:",
+      "Choices": [
+        "\"What ghost?\"",
+        "\"I've seen nothing but darkness and heard nothing but wind.\"",
+        "\"Nothing but that goblin that keeps appearing out of nowhere and farting in my face.  Yuck.\""
+      ],
+      "Responses": [
+        "Confused and tired, you ask your co-worker what he's talking about.",
+        "You tell your co-worker that you've seen nothing all night.  However, just as you say that, a ghost appears between the two of you.  Your co-worker exclaims \"That's the ghost!\" but it catches you off guard and you fall out of the tower to your death.  Boo!",
+        "Your co-worker looks at you as if you're insane or on some sort of illegal hallucinogenic drug.  As you try to compute what's so wrong with what you said, you pass out.  In hindsight, those goblin farts MAY have been toxic."
+      ],
+      "CorrectChoice": 0
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "\"I'm positive that, during my last shift, I saw the ghost of Lord Hamlet's late father.\" your co-worker elaborates.  As you try to recollect any sightings, that very ghost appears.  What do you do?",
+      "Choices": [
+        "Defend the tower.  Swing your blade at the ghost.",
+        "Run for your life.",
+      ],
+      "CorrectChoice": 0,
+      "Responses": [
+        "It's a ghost...the blade goes right through the ghost's body as if the ghost wasn't even there.",
+        "Panicking, the two of you quickly book it down the winding stairs toward the tower's exit.  The ghost yells something unintelligible which startles you even more, and the two of you subsequently fall down 4 flights of stairs.  At least you two won the Darwin awards and spent your last moments together!"
+      ]
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "Realizing how dumb of an idea that was, but not ready to give up just yet, you try something else.",
+      "Choices": [
+        "Ask the ghost what it wants.",
+      ],
+      "CorrectChoice": 0,
+      "Responses": [
+        "The ghost stares at you with a blank expression on it's face.  It heard you loud and clear, but has no idea what in God's name you just said."
+      ]
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "The ghost disappears.  You two decide to stand on guard together but the ghost never shows it's face again.  Afterwards, you decide to seek the assistance of Horatio, a highly-educated \"ghost-whisperer\" of sorts, who can speak fluent Latin.",
+      "Choices": [
+        "Explain the ghost to Horatio.",
+        "Try to talk to Horatio in Latin",
+        "Ask Horatio what the meaning of life, the universe, and everything is."
+      ],
+      "CorrectChoice": 0,
+      "Responses": [
+        "\"Uhhh, I think you meant to say apparition.  That'd be the technical term for it.\" Horatio smugly replies.",
+        "Horatio is bewildered.  You repeat yourself and he thinks to himself \"I don't have time for this...\" and walks away.",
+        "\"42,\" Horatio replies, as a developer console for the simulation of life pops up and God types \"reboot\" and hits Enter.  Peasants like you aren't allowed to know the truth."
+      ]
+    }
+  ]
+}
