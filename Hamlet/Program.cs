@@ -39,21 +39,60 @@ going to KNOW when you've chosen a wrong path in the game.
 
         static void Main(string[] args)
         {
+            Intro();
+        }
+
+        static void Intro()
+        {
             WriteLine(intro);
             ReadKey(true);
 
+            GameLoop();
+        }
+
+        static void GameOver()
+        {
+            Clear();
+
+            if (success)
+            {
+                WriteLine("You have completed HAMLET.");
+            }
+            else
+            {
+                WriteLine("GAME OVER");
+            }
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                WriteLine();
+                WriteLine(result);
+            }
+            WriteLine();
+            WriteLine("Thanks for playing.");
+            WriteLine();
+            WriteLine("Press any key to restart.");
+            ReadKey(true);
+
+            Clear();
+
+            Intro();
+        }
+
+        static void GameLoop()
+        {
+            result = "";
             inGame = true;
             currentState = 0;
             gameData = JsonConvert.DeserializeObject<GameData>(Properties.Resources.gamedata);
 
-            while(inGame)
+            while (inGame)
             {
                 var state = gameData.SceneStates[currentState];
 
                 Clear();
                 WriteLine("HAMLET - ACT {0}, SCENE {1}", state.Act + 1, state.Scene + 1);
                 WriteLine("============");
-                if(!string.IsNullOrWhiteSpace(result))
+                if (!string.IsNullOrWhiteSpace(result))
                 {
                     WriteLine();
                     WriteLine(result);
@@ -61,9 +100,9 @@ going to KNOW when you've chosen a wrong path in the game.
                 WriteLine();
                 WriteLine(state.Prompt);
                 WriteLine();
-                for(int i = 0; i < state.Choices.Length; i++)
+                for (int i = 0; i < state.Choices.Length; i++)
                 {
-                    if(i == currentChoice)
+                    if (i == currentChoice)
                     {
                         BackgroundColor = ConsoleColor.White;
                         ForegroundColor = ConsoleColor.Black;
@@ -86,7 +125,7 @@ going to KNOW when you've chosen a wrong path in the game.
 
                 var kinf = ReadKey(true);
 
-                switch(kinf.Key)
+                switch (kinf.Key)
                 {
                     case ConsoleKey.UpArrow:
                         if (currentChoice > 0) currentChoice--;
@@ -96,15 +135,15 @@ going to KNOW when you've chosen a wrong path in the game.
                         break;
                     case ConsoleKey.Enter:
                         result = state.Responses[currentChoice];
-                        if(currentChoice == state.CorrectChoice)
+                        if (currentChoice == state.CorrectChoice)
                         {
                             currentState++;
-                            if(currentState >= gameData.SceneStates.Length)
+                            if (currentState >= gameData.SceneStates.Length)
                             {
                                 inGame = false;
                                 success = true;
                             }
-                        } 
+                        }
                         else
                         {
                             inGame = false;
@@ -117,26 +156,7 @@ going to KNOW when you've chosen a wrong path in the game.
                 }
             }
 
-            Clear();
-
-            if(success)
-            {
-                WriteLine("You have completed HAMLET.");
-            }
-            else
-            {
-                WriteLine("GAME OVER");
-            }
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                WriteLine();
-                WriteLine(result);
-            }
-            WriteLine();
-            WriteLine("Thanks for playing.");
-            WriteLine();
-            WriteLine("Press any key to exit.");
-            ReadKey(true);
+            GameOver();
         }
     }
 }
