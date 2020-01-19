@@ -14,19 +14,9 @@ namespace Hamlet
         static readonly string intro = @"Hamlet - Text Adventure
 =======================
 
-This program is what happens when you tell a programmer to summarize
-Hamlet in 45 seconds as an English assignment.  Please note that
-it took way more than 45 seconds to write this and will probably take
-more than 45 seconds to play through this.
+This program is what happens when you tell a programmer to summarize Hamlet in 45 seconds as an English assignment.  Please note that it took way more than 45 seconds to write this and will probably take more than 45 seconds to play through this.
 
-I wanted to do a full text adventure similar to the Zork series where
-you are able to freely type anything but that'd be way too much work even
-for me.  So I decided to approach this more like the text adventures
-seen in Saints Row 4.  It's more like a multiple choice, but still,
-a text adventure nonetheless.  Also, this wouldn't be my program if there
-weren't a few bugs so be careful.  And it wouldn't be my program if it
-didn't have my sense of humor embedded straight into the code, so you're
-going to KNOW when you've chosen a wrong path in the game.
+I wanted to do a full text adventure similar to the Zork series where you are able to freely type anything but that'd be way too much work even for me.  So I decided to approach this more like the text adventures seen in Saints Row 4.  It's more like a multiple choice, but still, a text adventure nonetheless.  Also, this wouldn't be my program if there weren't a few bugs so be careful.  And it wouldn't be my program if it didn't have my sense of humor embedded straight into the code, so you're going to KNOW when you've chosen a wrong path in the game. 
 
      [Press any key to continue.]";
 
@@ -44,7 +34,7 @@ going to KNOW when you've chosen a wrong path in the game.
 
         static void Intro()
         {
-            WriteLine(intro);
+            WriteLine(WordWrap(intro, WindowWidth));
             ReadKey(true);
 
             GameLoop();
@@ -65,7 +55,7 @@ going to KNOW when you've chosen a wrong path in the game.
             if (!string.IsNullOrWhiteSpace(result))
             {
                 WriteLine();
-                WriteLine(result);
+                WriteLine(WordWrap(result, WindowWidth));
             }
             WriteLine();
             WriteLine("Thanks for playing.");
@@ -95,10 +85,10 @@ going to KNOW when you've chosen a wrong path in the game.
                 if (!string.IsNullOrWhiteSpace(result))
                 {
                     WriteLine();
-                    WriteLine(result);
+                    WriteLine(WordWrap(result, WindowWidth));
                 }
                 WriteLine();
-                WriteLine(state.Prompt);
+                WriteLine(WordWrap(state.Prompt, WindowWidth));
                 WriteLine();
                 for (int i = 0; i < state.Choices.Length; i++)
                 {
@@ -113,7 +103,7 @@ going to KNOW when you've chosen a wrong path in the game.
                         ForegroundColor = ConsoleColor.White;
                     }
 
-                    WriteLine(" {0}. {1}", i + 1, state.Choices[i]);
+                    WriteLine(WordWrap(string.Format(" {0}. {1}", i + 1, state.Choices[i]), WindowWidth));
                 }
 
                 BackgroundColor = ConsoleColor.Black;
@@ -157,6 +147,68 @@ going to KNOW when you've chosen a wrong path in the game.
             }
 
             GameOver();
+        }
+
+        static string WordWrap(string text, int width)
+        {
+            if (width <= 0) return text;
+
+            var sb = new StringBuilder();
+
+            int textPtr = 0;
+            int lineWidth = 0;
+
+            while(textPtr < text.Length)
+            {
+                string word = "";
+                for(int i = textPtr; i < text.Length; i++)
+                {
+                    word += text[i];
+                    if (char.IsWhiteSpace(text[i])) break;
+                }
+
+                int wordWidth = word.Length;
+
+                if(lineWidth + wordWidth > width && lineWidth > 0)
+                {
+                    sb.Append(Environment.NewLine);
+                    lineWidth = 0;
+                }
+
+                int wordPtr = 0;
+                while(wordWidth > width)
+                {
+                    int i = 0;
+                    int lw = 0;
+                    int p = 0;
+                    for(i = wordPtr; i < word.Length; i++)
+                    {
+                        int w = 1;
+                        if(lw + w > width)
+                        {
+                            wordPtr += p;
+                            wordWidth -= lw;
+                            sb.Append(Environment.NewLine);
+                            break;
+                        }
+
+                        sb.Append(word[wordPtr + p]);
+
+                        lw += w;
+                        p++;
+                    }
+                }
+
+                sb.Append(word.Substring(wordPtr));
+                lineWidth += wordWidth;
+
+                if (word.EndsWith("\n"))
+                    lineWidth = 0;
+
+                textPtr += word.Length;
+            }
+
+            return sb.ToString();
         }
     }
 }
