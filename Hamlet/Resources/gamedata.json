@@ -73,6 +73,56 @@
         "\"Uhhh, I think you meant to say apparition.  That'd be the technical term for it.\" Horatio smugly replies.",
         "Horatio is bewildered.  You repeat yourself and he thinks to himself \"I don't have time for this...\" and walks away.",
         "\"42,\" Horatio replies, as a developer console for the simulation of life pops up and God types \"reboot\" and hits Enter.  Peasants like you aren't allowed to know the truth."
+      ],
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "Horatio's comment is factually correct, but now you're annoyed. What do you do?",
+      "Choices": [
+        "Yell \"NERD!\" and throw an egg at Horatio.",
+        "Walk away.",
+        "\"Okay. Well, I didn't know that.\"",
+        "\"What the hell is an apparition?\""
+      ],
+      "Responses": [
+        "What? Are you a 5-year-old? That's a little bit immature.  Besides, there are no eggs around to throw at Horatio.",
+        "You can't walk away. You need Horatio's help to communicate with the ghost.",
+        "Horatio looks at you wondering how you even passed Kindergarten not knowing that but then immediately remembers that Kindergarten doesn't even exist in the middle-ages in Denmark, and with a straight face, says \"Fair enough.\"",
+        "Horatio pulls out a dictionary, flips to the definition of \"Apparition,\", and reads it to you.\r\n\r\n\"Apparition: a ghost or ghostlike image of a person.\""
+      ],
+      "CorrectChoice": 2,
+      "LoopBack": true
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "Horatio then asks: \"I'm having trouble understanding... why exactly do you need my help?\"",
+      "Choices": [
+        "\"We re really scared.\"",
+        "Tell Horatio that the ghost won't understand you.",
+        "Scratch your head."
+      ],
+      "LoopBack": true,
+      "Responses": [
+        "\"Go figure... security guards scared of a ghost that probably isn't real.  Come back when you've grown up, please.  I don't have time for this.\" Horatio sternly replies, belittling you in the process.  He walks away.  Great.  Now you've caused a bug in the text adventure's code... I didn't expect you to choose to do that.  Now Horatio's despawned out of the world and I can't get him back.  Why do you enjoy breaking my games so much?  Do you find pleasure in stressing me and my code out?  I am very disappointed in you, player.  I guess I'll just have to trigger the game over sequence and make you start all over.  I hope you're happy now.",
+        "You anxiously reply, with a noticeable stutter, \"W-we tried t-to talk to t-the g-g-ghost... b-but it d-didn't u-understand us! W-w-we were uhhh... uhm... w-wondering i-if you would b-be able t-to h-help u-us s-s-speak to it...\"",
+        "You scratch your head.  Horatio's confused, but now your head isn't itchy.  I'm pretty sure some dandruff came out of your hair though.  Do you even shower? Gross!"
+      ],
+      "CorrectChoice": 1
+    },
+    {
+      "Act": 0,
+      "Scene": 0,
+      "Prompt": "Horatio is confused for your health.  \"Are you two okay..? Your skin is beat red, almost flourescent.  That stutter also seems pretty nasty.  I can't tell if you two are seriously that terrified or if there's a medical emergency on our hands. Do I need to call 112?\"\r\n\r\n\"Anyway... I can certainly try.\"",
+      "Choices": [
+        "Take a few deep breaths.",
+        "This might be a medical emergency..."
+      ],
+      "CorrectChoice": 0,
+      "Responses": [
+        "You begin performing common breathing exercises to calm yourself down.  In.... out.... in... out... Once you're calm, you reply \"You'll understand when you see who it is... Trust me... Come stand guard with us at the tower and you'll see it.\"",
+        "You start to feel dizzy, as if you're about to pass out.  Your coworker screams \"CALL AN AMBULANCE.\"  Horatio dials 112, the Danish number for ambulances and fire.  Somehow, cellphones exist in this time period.  Either way, because I'm a horrible programmer, I cannot circumvent this medical emergency and you subsequently pass away before the cellphone finishes dialong.  Rest in peace."
       ]
     }
   ]

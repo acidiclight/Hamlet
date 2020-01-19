@@ -136,8 +136,11 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                         }
                         else
                         {
-                            inGame = false;
-                            success = false;
+                            if (!state.LoopBack)
+                            {
+                                inGame = false;
+                                success = false;
+                            }
                         }
 
 

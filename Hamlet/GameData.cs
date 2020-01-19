@@ -19,6 +19,7 @@ namespace Hamlet
         public int CorrectChoice { get; set; }
         public string Prompt { get; set; }
         public string[] Choices { get; set; }
+        public bool LoopBack { get; set; } = false;
         public string[] Responses { get; set; }
     }
 }
