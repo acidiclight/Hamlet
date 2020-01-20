@@ -118,10 +118,16 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 switch (kinf.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        if (currentChoice > 0) currentChoice--;
+                        if (currentChoice > 0)
+                            currentChoice--;
+                        else 
+                            currentChoice = state.Choices.Length - 1;
                         break;
                     case ConsoleKey.DownArrow:
-                        if (currentChoice < state.Choices.Length - 1) currentChoice++;
+                        if (currentChoice < state.Choices.Length - 1)
+                            currentChoice++;
+                        else 
+                            currentChoice = 0;
                         break;
                     case ConsoleKey.Enter:
                         result = state.Responses[currentChoice];
