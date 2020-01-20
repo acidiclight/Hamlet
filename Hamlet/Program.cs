@@ -228,16 +228,16 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                     if (char.IsWhiteSpace(text[i])) break;
                 }
 
-                int wordWidth = word.Length;
+                int wordWidth = word.TrimUnnecessaryWhiteSpace().Length;
 
-                if(lineWidth + wordWidth > width && lineWidth > 0)
+                if(lineWidth + wordWidth >= width && lineWidth > 0)
                 {
                     sb.Append(Environment.NewLine);
                     lineWidth = 0;
                 }
 
                 int wordPtr = 0;
-                while(wordWidth > width)
+                while(wordWidth >= width)
                 {
                     int i = 0;
                     int lw = 0;
@@ -245,7 +245,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                     for(i = wordPtr; i < word.Length; i++)
                     {
                         int w = 1;
-                        if(lw + w > width)
+                        if(lw + w >= width)
                         {
                             wordPtr += p;
                             wordWidth -= lw;
@@ -270,6 +270,31 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
             }
 
             return sb.ToString();
+        }
+    }
+
+    public static class MuffinUtilities
+    {
+        public static string TrimUnnecessaryWhiteSpace(this string text)
+        {
+            if (string.IsNullOrEmpty(text)) return text;
+
+            List<char> unneeded = new List<char>();
+
+            for(char c = '\0'; c < char.MaxValue; c++)
+            {
+                if(char.IsWhiteSpace(c) && c != ' ')
+                {
+                    unneeded.Add(c);
+                }
+            }
+
+            string result = text;
+
+            while (!string.IsNullOrEmpty(result) && unneeded.Contains(result[0])) result = result.Remove(0, 1);
+            while (!string.IsNullOrEmpty(result) && unneeded.Contains(result[result.Length - 1])) result = result.Remove(result.Length - 1, 1);
+
+            return result;
         }
     }
 }
