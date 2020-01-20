@@ -42,30 +42,82 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
 
         static void GameOver()
         {
-            Clear();
+            bool waiting = true;
+            int wChoice = 0;
+            string[] wChoices =
+            {
+                "Start at the beginning",
+                "Exit the game"
+            };
 
-            if (success)
+            while (waiting)
             {
-                WriteLine("You have completed HAMLET.");
-            }
-            else
-            {
-                WriteLine("GAME OVER");
-            }
-            if (!string.IsNullOrWhiteSpace(result))
-            {
+                Clear();
+
+                if (success)
+                {
+                    WriteLine("You have completed HAMLET.");
+                }
+                else
+                {
+                    WriteLine("GAME OVER");
+                }
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    WriteLine();
+                    WriteLine(WordWrap(result, WindowWidth));
+                }
                 WriteLine();
-                WriteLine(WordWrap(result, WindowWidth));
+                WriteLine("Thanks for playing.");
+                WriteLine();
+
+                WriteLine("What would you like to do?");
+                WriteLine();
+
+                for(int i = 0; i < wChoices.Length; i++)
+                {
+                    if(i == wChoice)
+                    {
+                        ForegroundColor = ConsoleColor.Black;
+                        BackgroundColor = ConsoleColor.White;
+                    } else
+                    {
+                        ForegroundColor = ConsoleColor.White;
+                        BackgroundColor = ConsoleColor.Black;
+                    }
+
+                    WriteLine(" {0}. {1}", i + 1, wChoices[i]);
+                }
+
+                BackgroundColor = ConsoleColor.Black;
+                ForegroundColor = ConsoleColor.Gray;
+
+                WriteLine();
+                WriteLine("[ENTER] Select   [UP/DOWN] Choose");
+
+                var kinf = ReadKey(true);
+
+                switch(kinf.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                    case ConsoleKey.DownArrow:
+                        if (wChoice == 0)
+                            wChoice++;
+                        else
+                            wChoice--;
+                        break;
+                    case ConsoleKey.Enter:
+                        waiting = false;
+                        break;
+                }
+
             }
-            WriteLine();
-            WriteLine("Thanks for playing.");
-            WriteLine();
-            WriteLine("Press any key to restart.");
-            ReadKey(true);
 
-            Clear();
-
-            Intro();
+            if (wChoice == 0)
+            {
+                Clear();
+                Intro();
+            }
         }
 
         static void GameLoop()
