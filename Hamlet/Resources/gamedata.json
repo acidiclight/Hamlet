@@ -124,6 +124,42 @@
         "You begin performing common breathing exercises to calm yourself down.  In.... out.... in... out... Once you're calm, you reply \"You'll understand when you see who it is... Trust me... Come stand guard with us at the tower and you'll see it.\"",
         "You start to feel dizzy, as if you're about to pass out.  Your coworker screams \"CALL AN AMBULANCE.\"  Horatio dials 112, the Danish number for ambulances and fire.  Somehow, cellphones exist in this time period.  Either way, because I'm a horrible programmer, I cannot circumvent this medical emergency and you subsequently pass away before the cellphone finishes dialong.  Rest in peace."
       ]
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "LATER THAT NIGHT...\r\n\r\nYou, your coworker, and Horatio are at the guard tower where the ghost was initially seen.  It's another cold night with no activity going on in the vast darkness. The three of you are bored out of your minds and waiting for the ghost to appear.\r\n\r\nWhat do you do?",
+      "Choices": [
+        "Drink some hot chocolate.",
+        "Break out a deck of cards.",
+        "Ask Horatio for some Latin lessons.",
+        "Scream \"Hello? Ghost? Are you there? Show yourself!\""
+      ],
+      "CorrectChoice": 3,
+      "Responses": [
+        "It's too cold out to reliably brew hot chocolate. Sorry!",
+        "The other two of you can't agree on what card game to play and the argument gets too heated and full of bickering.  Your coworker draws his blade and says \"Enough. We need to be focusing on that ghost. Stop arguing about those stupid cards or I'm stabbing both of you.\" Horatio is dumbfounded, you silently panic, and the three of you hesitantly get back to guarding.",
+        "Horatio, not in the mood to give Latin lessons, grins and says \"Lorem ipsum dolor sit amet.  That's Latin for: leave me alone, please.\"  Little do you know, that's actually dummy text because I'm too busy remembering how to code and do not have time to learn Latin. I can't even remember if those are even Latin words I just typed.",
+        "You stand tall, facing into the cold emptiness of the dark night, and let out a loud yell heard clearly from miles away. \"SHOW YOURSELF TO US, GHOST!\"  I'm fairly certain you disturbed the peaceful resting of a few people in that graveyard over there...  Conveniently, you're waiting for just that."
+      ],
+      "LoopBack": true
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "Your echoing scream was so loud and far-reaching that it woke up the ghost of Hamlet's late father.  He looks ETERNALLY ANGRY, looks you dead in the eye, and then looks at Horatio, and says something in Latin.  Horatio translates and says \"The ghost said: Why did you wake me up from my sleep? I was comfortable. What in God's name do you want?\"",
+      "Choices": [
+        "\"Can I walk through you?\"",
+        "\"What did YOU want last night?\"",
+        "\"Take me with you! Please! I can't stand this world of text anymore! This is not a good way to live a life!\""
+      ],
+      "CorrectChoice": 1,
+      "LoopBack": true,
+      "Responses": [
+        "The ghost is just annoyed and insulted now. \"Hello? I'M A GHOST. You tried to stab me earlier with that blade and IT went through me. What did you expect?\"",
+        "The ghost remembered the encounter from last night.  \"Oh... I was going to tell you I had a message for my son, Lord Hamlet. I was going to ask where he was, but neither of you idiots could understand me because you were too busy avoiding an urgent trip to the water closet.\"",
+        "The ghost confidently says \"As you wish!\" as he tries to interact beyond the grave with this game's debugger to shut it down.  Unfortunately, because this program isn't that advanced, there's no way for him to do so. He tried to trigger a \"Game Over\" screen to give you the choice to exit or restart, but he failed to realize that I scripted this specific scene to not end the game when you pick a bad option.  I guess your wish is actually MY command, and I just defied you. How does it feel?"
+      ]
     }
   ]
 }
