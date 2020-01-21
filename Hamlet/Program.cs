@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-using static System.Console;
-
 namespace Hamlet
 {
     class Program
@@ -27,6 +25,39 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
         static bool success = false;
         static string result = "";
 
+        static void WriteLine()
+        {
+            int spacesToClear = (Console.WindowWidth - Console.CursorLeft) - 1;
+
+            var bg = Console.BackgroundColor;
+            var fg = Console.ForegroundColor;
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            for(int i = 0; i < spacesToClear; i++)
+            {
+                Console.Write(" ");
+            }
+
+            Console.WriteLine();
+
+            Console.BackgroundColor = bg;
+            Console.ForegroundColor = fg;
+        }
+
+        static void WriteLine(string text)
+        {
+            Console.Write(text);
+            WriteLine();
+        }
+
+        static void WriteLine(string text, params object[] data)
+        {
+            Console.Write(text, data);
+            WriteLine();
+        }
+
         static void Main(string[] args)
         {
             Intro();
@@ -34,8 +65,10 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
 
         static void Intro()
         {
-            WriteLine(WordWrap(intro, WindowWidth));
-            ReadKey(true);
+            WriteLine(WordWrap(intro, Console.WindowWidth));
+            Console.ReadKey(true);
+
+            Clear();
 
             GameLoop();
         }
@@ -52,7 +85,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
 
             while (waiting)
             {
-                Clear();
+                Console.SetCursorPosition(0, 0);
 
                 if (success)
                 {
@@ -65,7 +98,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 if (!string.IsNullOrWhiteSpace(result))
                 {
                     WriteLine();
-                    WriteLine(WordWrap(result, WindowWidth));
+                    WriteLine(WordWrap(result, Console.WindowWidth));
                 }
                 WriteLine();
                 WriteLine("Thanks for playing.");
@@ -78,24 +111,26 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 {
                     if(i == wChoice)
                     {
-                        ForegroundColor = ConsoleColor.Black;
-                        BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.White;
                     } else
                     {
-                        ForegroundColor = ConsoleColor.White;
-                        BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
                     }
 
                     WriteLine(" {0}. {1}", i + 1, wChoices[i]);
                 }
 
-                BackgroundColor = ConsoleColor.Black;
-                ForegroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 WriteLine();
                 WriteLine("[ENTER] Select   [UP/DOWN] Choose");
 
-                var kinf = ReadKey(true);
+                Clear();
+
+                var kinf = Console.ReadKey(true);
 
                 switch(kinf.Key)
                 {
@@ -115,8 +150,17 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
 
             if (wChoice == 0)
             {
-                Clear();
+                Console.SetCursorPosition(0, 0);
                 Intro();
+            }
+        }
+
+        static void Clear()
+        {
+            int rowsLeft = (Console.WindowHeight - Console.CursorTop) - 1;
+            for(int i = 0; i < rowsLeft; i++)
+            {
+                WriteLine();
             }
         }
 
@@ -131,41 +175,43 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
             {
                 var state = gameData.SceneStates[currentState];
 
-                Clear();
+                Console.SetCursorPosition(0, 0);
                 WriteLine("HAMLET - ACT {0}, SCENE {1}", state.Act + 1, state.Scene + 1);
                 WriteLine("============");
                 if (!string.IsNullOrWhiteSpace(result))
                 {
                     WriteLine();
-                    WriteLine(WordWrap(result, WindowWidth));
+                    WriteLine(WordWrap(result, Console.WindowWidth));
                 }
                 WriteLine();
-                WriteLine(WordWrap(state.Prompt, WindowWidth));
+                WriteLine(WordWrap(state.Prompt, Console.WindowWidth));
                 WriteLine();
                 for (int i = 0; i < state.Choices.Length; i++)
                 {
                     if (i == currentChoice)
                     {
-                        BackgroundColor = ConsoleColor.White;
-                        ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
                     }
                     else
                     {
-                        BackgroundColor = ConsoleColor.Black;
-                        ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
 
-                    WriteLine(WordWrap(string.Format(" {0}. {1}", i + 1, state.Choices[i]), WindowWidth));
+                    WriteLine(WordWrap(string.Format(" {0}. {1}", i + 1, state.Choices[i]), Console.WindowWidth));
                 }
 
-                BackgroundColor = ConsoleColor.Black;
-                ForegroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 WriteLine();
                 WriteLine();
                 WriteLine("[ENTER] Choose   [UP/DOWN] Select choice");
 
-                var kinf = ReadKey(true);
+                Clear();
+
+                var kinf = Console.ReadKey(true);
 
                 switch (kinf.Key)
                 {
