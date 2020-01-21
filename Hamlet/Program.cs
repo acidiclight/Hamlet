@@ -35,12 +35,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
 
-            for(int i = 0; i < spacesToClear; i++)
-            {
-                Console.Write(" ");
-            }
-
-            Console.WriteLine();
+            Console.WriteLine("".PadRight(spacesToClear, ' '));     
 
             Console.BackgroundColor = bg;
             Console.ForegroundColor = fg;
