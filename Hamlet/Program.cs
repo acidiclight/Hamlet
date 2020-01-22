@@ -43,14 +43,50 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
 
         static void WriteLine(string text)
         {
+            string[] lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            int left = Console.CursorLeft;
+            int top = Console.CursorTop;
+
+            var fg = Console.ForegroundColor;
+            var bg = Console.BackgroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
+
+            int leftLine = left;
+
+            string ensor = "";
+
+            for(int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+
+                ensor = ensor.Add(line.Length, ' ');
+
+                int winRight = ((Console.WindowWidth - leftLine) - line.Length);
+
+                ensor = ensor.Add(winRight, ' ');
+
+                leftLine = 0;
+            }
+
+            Console.Write(ensor);
+
+            Console.CursorLeft = left;
+            Console.CursorTop = top;
+
+            Console.BackgroundColor = bg;
+            Console.ForegroundColor = fg;
+
             Console.Write(text);
+
             WriteLine();
         }
 
         static void WriteLine(string text, params object[] data)
         {
-            Console.Write(text, data);
-            WriteLine();
+            WriteLine(string.Format(text, data));
         }
 
         static void Main(string[] args)
@@ -82,25 +118,31 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
             {
                 Console.SetCursorPosition(0, 0);
 
+                string gameOverTitle = "";
+                string resText = "";
+
                 if (success)
                 {
-                    WriteLine("You have completed HAMLET.");
+                    gameOverTitle = "You have completed HAMLET.";
                 }
                 else
                 {
-                    WriteLine("GAME OVER");
+                    gameOverTitle = "GAME OVER";
                 }
                 if (!string.IsNullOrWhiteSpace(result))
                 {
-                    WriteLine();
-                    WriteLine(WordWrap(result, Console.WindowWidth));
+                    resText = "\r\n" + result;
                 }
-                WriteLine();
-                WriteLine("Thanks for playing.");
-                WriteLine();
 
-                WriteLine("What would you like to do?");
-                WriteLine();
+                string prompt = $@"{gameOverTitle}
+{resText}
+
+Thanks for playing.
+
+What would you like to do?
+
+";
+                WriteLine(WordWrap(prompt, Console.WindowWidth));
 
                 for(int i = 0; i < wChoices.Length; i++)
                 {
@@ -120,8 +162,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-                WriteLine();
-                WriteLine("[ENTER] Select   [UP/DOWN] Choose");
+                WriteLine("\r\n[ENTER] Select   [UP/DOWN] Choose");
 
                 Clear();
 
@@ -153,10 +194,13 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
         static void Clear()
         {
             int rowsLeft = (Console.WindowHeight - Console.CursorTop) - 1;
-            for(int i = 0; i < rowsLeft; i++)
+            string row = "".PadRight((Console.WindowWidth - Console.CursorLeft) - 1, ' ');
+            for(int i = 0; i < rowsLeft - 1; i++)
             {
-                WriteLine();
+                row += "\r\n" + "".PadRight(Console.WindowWidth - 1, ' ');
             }
+
+            Console.WriteLine(row);
         }
 
         static void GameLoop()
@@ -171,16 +215,22 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 var state = gameData.SceneStates[currentState];
 
                 Console.SetCursorPosition(0, 0);
-                WriteLine("HAMLET - ACT {0}, SCENE {1}", state.Act + 1, state.Scene + 1);
-                WriteLine("============");
+
+                string resText = "";
+
                 if (!string.IsNullOrWhiteSpace(result))
                 {
-                    WriteLine();
-                    WriteLine(WordWrap(result, Console.WindowWidth));
+                    resText = "\r\n" + result + "\r\n";
                 }
-                WriteLine();
-                WriteLine(WordWrap(state.Prompt, Console.WindowWidth));
-                WriteLine();
+
+                string promptText = $@"Hamlet - Act {state.Act + 1}, Scene {state.Scene + 1}
+================================
+{resText}
+{state.Prompt}
+";
+
+                WriteLine(WordWrap(promptText, Console.WindowWidth));
+
                 for (int i = 0; i < state.Choices.Length; i++)
                 {
                     if (i == currentChoice)
@@ -200,9 +250,7 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-                WriteLine();
-                WriteLine();
-                WriteLine("[ENTER] Choose   [UP/DOWN] Select choice");
+                WriteLine("\r\n\r\n[ENTER] Choose   [UP/DOWN] Select choice");
 
                 Clear();
 
@@ -336,6 +384,14 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
             while (!string.IsNullOrEmpty(result) && unneeded.Contains(result[result.Length - 1])) result = result.Remove(result.Length - 1, 1);
 
             return result;
+        }
+
+        public static string Add(this string src, int count, char c)
+        {
+            string dst = src;
+            for (int i = 0; i < count; i++)
+                dst += c;
+            return dst;
         }
     }
 }
