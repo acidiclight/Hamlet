@@ -160,6 +160,57 @@
         "The ghost remembers the encounter from last night.  \"Oh... I was going to tell you I had a message for my son, Lord Hamlet. I was going to ask where he was, but neither of you idiots could understand me because you were too busy avoiding an urgent trip to the water closet.\"",
         "The ghost confidently says \"As you wish!\" as he tries to interact beyond the grave with this game's debugger to shut it down.  Unfortunately, because this program isn't that advanced, there's no way for him to do so. He tried to trigger a \"Game Over\" screen to give you the choice to exit or restart, but he failed to realize that I scripted this specific scene to not end the game when you pick a bad option.  I guess your wish is actually MY command, and I just defied you. How does it feel?"
       ]
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "Horatio explains to the ghost that not everyone in the world speaks Latin. \"If you were half as intelligent as I am, you would know this,\" he says.  The ghost shrugs.  \"Hmph. Well, I have a messahe for my son.\" the ghost replies. \"Are you two capable of delivering it?\" he asks, concerned.",
+      "Choices": [
+        "Lie, and say Hamlet died.",
+        "\"You're not real.\"",
+        "\"Ugh. Fine.\""
+      ],
+      "LoopBack": true,
+      "CorrectChoice": 2,
+      "Responses": [
+        "You decide to confidently say \"But Lord Hamlet died yesterday of a heart attack!\" The ghost looks shocked and worried for a second, but quickly realizes you lied. \"How could that be? I'm a ghost! If Hamlet were dead, would he not be a ghost too? Liar!\"",
+        "The ghost replies, in a smug yet oddly philosophical voice, \"How can you prove that? After all, you can see me. You can hear me. You've certainly tried to touch me. In fact, I just farted and I know you can smell it. Can you really prove that I'm not real? Are you real? Is this tower real? What is life? What is the universe? What does this all mean?\"\r\n\r\nHoratio says \"42.\"\r\n\r\nThe ghost cuts him off. \"Shut up. I'm trying to prove a point. Now, will ANY of you deliver my message to Hamlet?\"",
+        "\"Good,\" the ghost replies."
+      ]
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "The ghost starts to explain the true story about his death.  Something to do with adultory or something.  I can't remember, read the actual Hamlet play!  I didn't expect anyone to actually play this far into this text adventure.  I'm starting to run out of ideas.  Either way, eventually the ghost shuts his mouth and disappears.  What will you do with the information he's given you?",
+      "Choices": [
+        "Ask Horatio to pass the message on for you.",
+        "Report the incident to the king and leave Hamlet out of it, possibly avoiding an entire extra 4 acts of hell.",
+        "File a bug report for my code because you're not satisfied with my spin on Hamlet."
+      ],
+      "CorrectChoice": 1,
+      "LoopBack": true,
+      "Responses": [
+        "In the midst of another anxiety attack, on the verge of wetting yourself, you ask Horatio if he'll deal with this for you. \"No. I've dealt with enough of this already. Grow up.\" he says in a stern voice.",
+        "You go to leave the tower to report the ghost incident to the king, leaving Hamlet out of it. However, William Shakespeare himself magically appears in the doorway, blocking you.\r\n\r\n\"I knoweth what thou art trying to doth, but t is not what i've did plan.  Bethink of something else.  I wanteth not thee tamp'ring with mine own st'ry liketh yond.\"\r\n\r\nDon't ask me what that means.  However, what William didn't realize, is that *I* control this game.  *I am the programmer!*  You lost the ability to control this story centuries ago, my sweet Billy. I think it'd be entertaining to see what the player decides to do to you.",
+        "I'm sorry you aren't satisfied with this game, but you should have read the BIG DISCLAIMER at the start saying what this really is.  I'm not accepting bug reports.  Replaying scene..."
+      ]
+    },
+    {
+      "Act": 0,
+      "Scene": 1,
+      "Prompt": "As the developer, I give you - the player - the ability to defy Shakespeare's wishes.  I want you to tell the King what the ghost told you.  Let's avoid 80% of the story of Hamlet.  Let's do this.  What's your plan?",
+      "Choices": [
+        "Climb through the tower's window, and carefully climb the side of the tower until you reach the ground.  Completely circumvent Shakespeare in the process.",
+        "Stab Shakespeare with your sword and go through the door.",
+        "Ask Shakespare nicely to step aside."
+      ],
+      "LoopBack": true,
+      "CorrectChoice": 1,
+      "Responses": [
+        "The window is locked shut.  Smashing through it is effortless, as somehow bullet-proof and smash-proof glass exists in this time.",
+        "You pull out your blade, and go for a fatal blow. At first, Shakespeare blocks the attack. Then, epic battle music plays. Horatio and your coworker both quietly retreat as a furious battle between you and William Shakespeare himself takes place.  The two of you sword-fight all the way down the tower to ground level.  Little do the two of you know, Horatio and the coworker have already made it to the king and reported the ghost incident.  Realizing this could be happening, you taunt Shakespeare.\r\n\r\n\"You know, you have no clue what my friends are doing right now! While I'm drawing out your last moments, your pitiful story is being dismantled! You're nothing but a waste of text on a screen!\"\r\n\r\nShakespeare lets his guard down trying to come up with a rebuttle.\r\n\r\nYou deliver the fatal blow.  william Shakespeare has fallen.\r\n\r\nI've just spilled coffee all over my keyboard.  You've done it.  Take a deep breath.  It's all over.  You've made it through.  You've saved many future generations of children the hassle of \"conquering\" Shakespeare and Hamlet.\r\n\r\nYour life has been fulfilled, and my work as a developer is done.",
+        "Shakespeare says \"No.\""
+      ]
     }
   ]
 }
