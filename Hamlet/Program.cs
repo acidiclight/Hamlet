@@ -97,9 +97,9 @@ I wanted to do a full text adventure similar to the Zork series where you are ab
         static void Intro()
         {
             WriteLine(WordWrap(intro, Console.WindowWidth));
-            Console.ReadKey(true);
-
             Clear();
+
+            Console.ReadKey(true);
 
             GameLoop();
         }
